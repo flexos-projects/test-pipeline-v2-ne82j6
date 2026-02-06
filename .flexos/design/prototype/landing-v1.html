@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Test Pipeline v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/uno.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide-vue-next@latest/dist/lucide-vue-next.iife.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="shared/components.css">
+  <script src="shared/mock-data.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    [v-cloak] { display: none; }
+  </style>
+</head>
+<body class="bg-slate-1 dark:bg-slate-1 text-slate-12 dark:text-slate-12 antialiased">
+
+  <div id="app" v-cloak class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center border-b border-slate-6 dark:border-slate-6 sticky top-0 bg-slate-1/80 dark:bg-slate-1/80 backdrop-blur-lg z-10">
+      <a href="#" class="flex items-center gap-2 font-bold text-lg">
+        <icon-test-tube-2 class="text-primary-9"></icon-test-tube-2>
+        <span>Test Pipeline v2</span>
+      </a>
+      <a href="dashboard-v1.html" class="btn btn-primary">Go to Dashboard</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <!-- Hero Section -->
+      <section class="text-center py-20 px-4">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tighter">Test Pipeline v2</h1>
+        <p class="text-xl text-slate-11 dark:text-slate-11 max-w-2xl mx-auto mb-8">Testing with autoInit true</p>
+        <div class="flex justify-center gap-4">
+          <a href="dashboard-v1.html" class="btn btn-primary btn-lg">Get Started</a>
+        </div>
+      </section>
+
+      <!-- Problem/Solution Section -->
+      <section class="py-20 px-4 bg-slate-2 dark:bg-slate-2">
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-3xl font-bold mb-4">The Problem</h2>
+            <p class="text-slate-11 dark:text-slate-11">Need to test the pipeline</p>
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold mb-4">The Solution</h2>
+            <p class="text-slate-11 dark:text-slate-11">Run this test</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
+          <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+            <div class="card p-6 flex items-start gap-4">
+              <div class="bg-primary-3 text-primary-11 p-3 rounded-lg">
+                <icon-check-square :size="24"></icon-check-square>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Task Management</h3>
+                <p class="text-slate-11 dark:text-slate-11">Efficiently manage and track all your testing tasks from start to finish.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-8 border-t border-slate-6 dark:border-slate-6 text-center text-slate-11 dark:text-slate-11">
+      <p>&copy; {{ new Date().getFullYear() }} Test Pipeline v2. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const { createApp, ref, onMounted, onUnmounted } = Vue
+    const App = {
+      setup() {
+        const isMobile = ref(window.innerWidth < 768)
+
+        const checkScreenSize = () => {
+          isMobile.value = window.innerWidth < 768
+        }
+
+        onMounted(async () => {
+          await mockDb.init()
+          console.log('Mock data loaded for landing page.')
+          window.addEventListener('resize', checkScreenSize)
+        })
+
+        onUnmounted(() => {
+          window.removeEventListener('resize', checkScreenSize)
+        })
+
+        return { isMobile }
+      },
+      components: {
+        'icon-test-tube-2': lucide.TestTube2,
+        'icon-check-square': lucide.CheckSquare,
+      }
+    }
+
+    const app = createApp(App)
+    app.mount('#app')
+  </script>
+</body>
+</html>

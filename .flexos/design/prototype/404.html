@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Page Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/uno.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide-vue-next@latest/dist/lucide-vue-next.iife.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="shared/components.css">
+  <script src="shared/mock-data.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    [v-cloak] { display: none; }
+  </style>
+</head>
+<body class="bg-slate-1 dark:bg-slate-1 text-slate-12 dark:text-slate-12 antialiased">
+
+  <div id="app" v-cloak class="min-h-screen flex flex-col items-center justify-center text-center p-4">
+      <icon-search-x class="text-primary-9 mb-4" :size="64"></icon-search-x>
+      <h1 class="text-5xl font-extrabold mb-2">404</h1>
+      <p class="text-xl text-slate-11 dark:text-slate-11 mb-8">Sorry, we couldn't find the page you're looking for.</p>
+      <a href="landing-v1.html" class="btn btn-primary">
+        Go to Homepage
+      </a>
+  </div>
+
+  <script>
+    const { createApp } = Vue
+    const App = {
+      setup() {
+        return {}
+      },
+      components: {
+        'icon-search-x': lucide.SearchX,
+      }
+    }
+
+    const app = createApp(App)
+    app.mount('#app')
+  </script>
+</body>
+</html>
