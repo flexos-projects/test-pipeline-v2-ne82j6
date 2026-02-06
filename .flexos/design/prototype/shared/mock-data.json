@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": "tasks-1",
+      "createdAt": "2026-02-06T23:19:34.328Z",
+      "updatedAt": "2026-02-06T23:19:34.328Z"
+    },
+    {
+      "id": "tasks-2",
+      "createdAt": "2026-02-06T23:19:34.328Z",
+      "updatedAt": "2026-02-06T23:19:34.328Z"
+    },
+    {
+      "id": "tasks-3",
+      "createdAt": "2026-02-06T23:19:34.328Z",
+      "updatedAt": "2026-02-06T23:19:34.328Z"
+    }
+  ],
+  "currentUser": {
+    "id": "user-1",
+    "name": "Demo User",
+    "email": "demo@example.com"
+  }
+}
